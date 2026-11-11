@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Journées types : lecture/utilisation ouverte à tous les utilisateurs
+        Timesheet (pour permettre le partage entre plusieurs collaborateurs,
+        cf. décision client - filtres, pas de restriction d'accès en
+        lecture). Seuls le créateur d'une journée type et les managers
+        Timesheet peuvent la modifier ou la supprimer.
+    -->
+    <record id="hr_timesheet_day_template_rule_see_all" model="ir.rule">
+        <field name="name">Journée type: lecture pour tous les utilisateurs Timesheet</field>
+        <field name="model_id" ref="model_hr_timesheet_day_template"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('hr_timesheet.group_hr_timesheet_user'))]"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">0</field>
+        <field name="perm_create">0</field>
+        <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="hr_timesheet_day_template_rule_manage_own" model="ir.rule">
+        <field name="name">Journée type: gestion de ses propres modèles</field>
+        <field name="model_id" ref="model_hr_timesheet_day_template"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('hr_timesheet.group_hr_timesheet_user'))]"/>
+        <field name="perm_read">0</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="hr_timesheet_day_template_rule_manage_all" model="ir.rule">
+        <field name="name">Journée type: gestion complète pour les managers Timesheet</field>
+        <field name="model_id" ref="model_hr_timesheet_day_template"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr_timesheet.group_timesheet_manager'))]"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- Les lignes suivent les mêmes règles que leur journée type parente -->
+    <record id="hr_timesheet_day_template_line_rule_see_all" model="ir.rule">
+        <field name="name">Ligne de journée type: lecture pour tous les utilisateurs Timesheet</field>
+        <field name="model_id" ref="model_hr_timesheet_day_template_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr_timesheet.group_hr_timesheet_user'))]"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">0</field>
+        <field name="perm_create">0</field>
+        <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="hr_timesheet_day_template_line_rule_manage_own" model="ir.rule">
+        <field name="name">Ligne de journée type: gestion de ses propres lignes</field>
+        <field name="model_id" ref="model_hr_timesheet_day_template_line"/>
+        <field name="domain_force">[('template_id.create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('hr_timesheet.group_hr_timesheet_user'))]"/>
+        <field name="perm_read">0</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="hr_timesheet_day_template_line_rule_manage_all" model="ir.rule">
+        <field name="name">Ligne de journée type: gestion complète pour les managers</field>
+        <field name="model_id" ref="model_hr_timesheet_day_template_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('hr_timesheet.group_timesheet_manager'))]"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+</odoo>

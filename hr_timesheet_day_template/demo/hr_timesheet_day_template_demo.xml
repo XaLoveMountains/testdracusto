@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- "Piquet" day template, shared between two colleagues -->
+    <record id="hr_timesheet_day_template_demo_piquet" model="hr.timesheet.day.template">
+        <field name="name">Piquet</field>
+        <field name="employee_ids" eval="[(6, 0, [ref('hr.employee_qdp'), ref('hr.employee_hne')])]"/>
+    </record>
+    <record id="hr_timesheet_day_template_demo_piquet_line_1" model="hr.timesheet.day.template.line">
+        <field name="template_id" ref="hr_timesheet_day_template_demo_piquet"/>
+        <field name="sequence">10</field>
+        <field name="project_id" ref="project.project_home_construction"/>
+        <field name="name">Astreinte - matin</field>
+        <field name="unit_amount">4.0</field>
+    </record>
+    <record id="hr_timesheet_day_template_demo_piquet_line_2" model="hr.timesheet.day.template.line">
+        <field name="template_id" ref="hr_timesheet_day_template_demo_piquet"/>
+        <field name="sequence">20</field>
+        <field name="project_id" ref="project.project_project_1"/>
+        <field name="name">Astreinte - après-midi</field>
+        <field name="unit_amount">4.0</field>
+    </record>
+
+    <!-- "Bureau + chantier" day template, personal -->
+    <record id="hr_timesheet_day_template_demo_bureau_chantier" model="hr.timesheet.day.template">
+        <field name="name">Bureau + chantier</field>
+        <field name="employee_ids" eval="[(6, 0, [ref('hr.employee_qdp')])]"/>
+    </record>
+    <record id="hr_timesheet_day_template_demo_bureau_chantier_line_1" model="hr.timesheet.day.template.line">
+        <field name="template_id" ref="hr_timesheet_day_template_demo_bureau_chantier"/>
+        <field name="sequence">10</field>
+        <field name="project_id" ref="project.project_project_1"/>
+        <field name="task_id" ref="project.project_1_task_1"/>
+        <field name="name">Bureau - préparation</field>
+        <field name="unit_amount">4.0</field>
+    </record>
+    <record id="hr_timesheet_day_template_demo_bureau_chantier_line_2" model="hr.timesheet.day.template.line">
+        <field name="template_id" ref="hr_timesheet_day_template_demo_bureau_chantier"/>
+        <field name="sequence">20</field>
+        <field name="project_id" ref="project.project_project_3"/>
+        <field name="name">Chantier - suivi</field>
+        <field name="unit_amount">4.0</field>
+    </record>
+
+    <!-- "Client X et Y" day template, personal -->
+    <record id="hr_timesheet_day_template_demo_client_x_y" model="hr.timesheet.day.template">
+        <field name="name">Client X et Y</field>
+        <field name="employee_ids" eval="[(6, 0, [ref('hr.employee_hne')])]"/>
+    </record>
+    <record id="hr_timesheet_day_template_demo_client_x_y_line_1" model="hr.timesheet.day.template.line">
+        <field name="template_id" ref="hr_timesheet_day_template_demo_client_x_y"/>
+        <field name="sequence">10</field>
+        <field name="project_id" ref="project.project_home_construction"/>
+        <field name="name">Client X</field>
+        <field name="unit_amount">5.0</field>
+    </record>
+    <record id="hr_timesheet_day_template_demo_client_x_y_line_2" model="hr.timesheet.day.template.line">
+        <field name="template_id" ref="hr_timesheet_day_template_demo_client_x_y"/>
+        <field name="sequence">20</field>
+        <field name="project_id" ref="project.project_project_2"/>
+        <field name="name">Client Y</field>
+        <field name="unit_amount">3.0</field>
+    </record>
+
+</odoo>
