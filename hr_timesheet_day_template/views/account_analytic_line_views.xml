@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- "My Timesheets" personal grid -->
+    <record id="timesheet_view_grid_apply_day_templates" model="ir.ui.view">
+        <field name="name">account.analytic.line.grid.apply.day.templates</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="timesheet_grid.timesheet_view_grid"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='unit_amount']" position="before">
+                <button type="object" name="action_open_apply_day_templates"
+                        string="Appliquer des journées types" class="btn-secondary"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- "All Timesheets" grid used by managers/approvers -->
+    <record id="timesheet_view_grid_by_employee_apply_day_templates" model="ir.ui.view">
+        <field name="name">account.analytic.line.grid.employee.apply.day.templates</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="timesheet_grid.timesheet_view_grid_by_employee_editable_manager"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='unit_amount']" position="before">
+                <button type="object" name="action_open_apply_day_templates"
+                        string="Appliquer des journées types" class="btn-secondary"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

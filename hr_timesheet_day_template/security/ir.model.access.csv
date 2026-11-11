@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_timesheet_day_template_user,hr.timesheet.day.template.user,model_hr_timesheet_day_template,hr_timesheet.group_hr_timesheet_user,1,1,1,1
+access_hr_timesheet_day_template_line_user,hr.timesheet.day.template.line.user,model_hr_timesheet_day_template_line,hr_timesheet.group_hr_timesheet_user,1,1,1,1
+access_hr_timesheet_day_template_apply_user,hr.timesheet.day.template.apply.user,model_hr_timesheet_day_template_apply,hr_timesheet.group_hr_timesheet_user,1,1,1,1
+access_hr_timesheet_day_template_apply_line_user,hr.timesheet.day.template.apply.line.user,model_hr_timesheet_day_template_apply_line,hr_timesheet.group_hr_timesheet_user,1,1,1,1

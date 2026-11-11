@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_timesheet_day_template_apply_view_form" model="ir.ui.view">
+        <field name="name">hr.timesheet.day.template.apply.form</field>
+        <field name="model">hr.timesheet.day.template.apply</field>
+        <field name="arch" type="xml">
+            <form string="Appliquer des journées types">
+                <group>
+                    <field name="employee_id"/>
+                    <label for="date_anchor" string="Semaine"/>
+                    <div class="d-flex align-items-center gap-2">
+                        <button name="action_previous_week" type="object"
+                                string="◀" class="btn btn-secondary"/>
+                        <field name="date_anchor" nolabel="1"/>
+                        <button name="action_next_week" type="object"
+                                string="▶" class="btn btn-secondary"/>
+                    </div>
+                </group>
+                <field name="day_ids">
+                    <list editable="bottom" create="false" delete="false">
+                        <field name="day_name" readonly="1" string="Jour"/>
+                        <field name="date" column_invisible="True"/>
+                        <field name="template_id"/>
+                    </list>
+                </field>
+                <footer>
+                    <button string="Appliquer" name="action_apply" type="object" class="btn-primary"/>
+                    <button string="Annuler" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

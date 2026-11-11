@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_hr_timesheet_day_template"
+              name="Journées types"
+              parent="hr_timesheet.timesheet_menu_root"
+              action="hr_timesheet_day_template_action"
+              groups="hr_timesheet.group_hr_timesheet_user"
+              sequence="8"/>
+</odoo>
